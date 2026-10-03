@@ -1,69 +1,335 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  QrCode,
+  ScanLine,
+  ShieldCheck,
+  Heart,
+  Droplets,
+  ArrowRight,
+  Clock,
+  MapPin,
+  CheckCircle,
+  ExternalLink,
+  Lock,
+} from "lucide-react";
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-sky-100 selection:text-sky-900">
+      {/* Top Announcement Bar */}
+      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 text-center border-b border-slate-800 flex items-center justify-center gap-2">
+        <span className="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>Program CSR Berjalan Aktif · Kuota 2 Liter / Orang Setiap Hari Gratis</span>
+      </div>
+
+      {/* Navigation */}
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative w-11 h-11 rounded-full overflow-hidden border border-slate-200 shadow-xs flex-shrink-0 bg-white">
+              <Image
+                src="/images/logo.jpg"
+                alt="PT. Benua Green Energy Logo"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="font-bold text-slate-900 text-base tracking-tight leading-none">
+                  PT. Benua Green Energy
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 font-medium leading-tight mt-0.5">
+                Blue Gold Resources · Program Air Alkali Gratis
+              </p>
+            </div>
+          </div>
+
+          <nav className="flex items-center gap-2 sm:gap-3">
+            <Link href="/my-qr">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs sm:text-sm font-medium border-slate-300 text-slate-700 hover:bg-slate-50"
+              >
+                <QrCode className="w-3.5 h-3.5 mr-1.5 text-slate-600" />
+                Kartu QR Saya
+              </Button>
+            </Link>
+            <Link href="/register">
+              <Button
+                size="sm"
+                className="text-xs sm:text-sm font-medium bg-slate-900 hover:bg-slate-800 text-white shadow-xs"
+              >
+                Daftar Warga
+              </Button>
+            </Link>
+          </nav>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="bg-slate-50/70 border-b border-slate-200/80 py-16 sm:py-24">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            {/* Real Logo in Hero Badge */}
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-xs mb-8">
+              <div className="relative w-6 h-6 rounded-full overflow-hidden border border-slate-200">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-xs font-semibold text-slate-700">
+                Inisiatif Sosial & Kesehatan Masyarakat
+              </span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+              Akses Air Minum Alkali Sehat,{" "}
+              <span className="text-sky-700">Gratis Setiap Hari</span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+              Program kepedulian sosial dari <strong>PT. Benua Green Energy</strong> untuk
+              kesehatan warga sekitar. Setiap individu berhak mendapatkan jatah{" "}
+              <span className="text-slate-900 font-semibold">2 Liter air alkali</span> setiap hari
+              tanpa dipungut biaya.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link href="/register" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold text-base px-8 h-12 shadow-sm"
+                >
+                  <QrCode className="w-4 h-4 mr-2" />
+                  Daftar & Dapatkan Kartu QR
+                </Button>
+              </Link>
+              <Link href="/my-qr" className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto bg-white border-slate-300 text-slate-700 hover:bg-slate-100 font-medium text-base px-6 h-12"
+                >
+                  Sudah Terdaftar? Buka QR
+                </Button>
+              </Link>
+            </div>
+
+            {/* Quick Metrics */}
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 border-t border-slate-200">
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs">
+                <div className="text-2xl font-bold text-slate-900">2 Liter</div>
+                <div className="text-xs text-slate-500 mt-1">Kuota Harian / Orang</div>
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs">
+                <div className="text-2xl font-bold text-sky-700">pH 8.5+</div>
+                <div className="text-xs text-slate-500 mt-1">Kualitas Alkali Tinggi</div>
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs">
+                <div className="text-2xl font-bold text-emerald-700">100% Gratis</div>
+                <div className="text-xs text-slate-500 mt-1">Tanpa Biaya Apapun</div>
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs">
+                <div className="text-2xl font-bold text-slate-900">Scan QR</div>
+                <div className="text-xs text-slate-500 mt-1">Pengambilan Cepat</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3 Step Flow */}
+        <section className="py-16 sm:py-20 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-xl mx-auto mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                Alur Praktis Pengambilan Air
+              </h2>
+              <p className="text-sm sm:text-base text-slate-500 mt-2">
+                Hanya butuh 3 langkah sederhana untuk menikmati air alkali sehat setiap hari.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {/* Step 1 */}
+              <div className="p-6 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-sm mb-4">
+                  1
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Daftar Data Diri</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Isi nama lengkap, nomor WhatsApp, dan domisili RT/RW sekali saja. Pendaftaran langsung aktif seketika.
+                </p>
+              </div>
+
+              {/* Step 2 */}
+              <div className="p-6 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-sky-700 text-white flex items-center justify-center font-bold text-sm mb-4">
+                  2
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Simpan Kartu QR</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Dapatkan Kartu QR digital khusus Anda. Simpan screenshot di galeri HP atau bookmark halamannya.
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="p-6 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-sm mb-4">
+                  3
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Ambil di Pos Air</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Bawa botol/tumbler ukuran 2 liter Anda ke pos. Tunjukkan QR ke petugas untuk di-scan dan diisi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Info & Jadwal Pos */}
+        <section className="py-14 bg-slate-50 border-y border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 text-xs font-semibold mb-3 border border-emerald-200">
+                    <CheckCircle className="w-3.5 h-3.5" />
+                    Pos Distribusi Aktif
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900">
+                    Pos Air Alkali PT. Benua Green Energy
+                  </h3>
+                  <div className="flex flex-col gap-2 mt-3 text-sm text-slate-600">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                      <span>Pos Utama Blue Gold Resources (Area Booth Distribusi Warga)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                      <span>Jam Layanan: <strong>07.00 - 17.00 WIB</strong> (Setiap Hari)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0 flex flex-col gap-2">
+                  <Link href="/register">
+                    <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm">
+                      Daftar Sekarang
+                      <ArrowRight className="w-4 h-4 ml-1.5" />
+                    </Button>
+                  </Link>
+                  <p className="text-[11px] text-slate-400 text-center">
+                    Kuota harian reset tiap 00:00 WIB
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section className="py-16 sm:py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-xl mx-auto mb-10">
+              <h2 className="text-2xl font-bold text-slate-900">Manfaat Air Minum Alkali</h2>
+              <p className="text-sm text-slate-500 mt-1.5">
+                Kandungan mineral mikro dan tingkat basa seimbang untuk kesehatan keluarga.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-3 gap-6">
+              <div className="p-5 rounded-xl border border-slate-200">
+                <div className="w-9 h-9 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center mb-3">
+                  <Droplets className="w-5 h-5" />
+                </div>
+                <h4 className="font-semibold text-slate-900 mb-1">Hidrasi Maksimal</h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Molekul mikro lebih cepat diserap oleh sel tubuh sehingga mencegah dehidrasi lebih efektif.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-xl border border-slate-200">
+                <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center mb-3">
+                  <Heart className="w-5 h-5" />
+                </div>
+                <h4 className="font-semibold text-slate-900 mb-1">Keseimbangan Asam Basa</h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Membantu menetralkan kadar asam berlebih dalam pencernaan akibat pola makan modern.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-xl border border-slate-200">
+                <div className="w-9 h-9 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center mb-3">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <h4 className="font-semibold text-slate-900 mb-1">Kaya Antioksidan</h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Mengandung antioksidan alami yang menangkal radikal bebas dan menjaga daya tahan tubuh.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-slate-800">
+            <div className="flex items-center gap-3">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white flex-shrink-0">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="Logo PT. Benua Green Energy"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-base leading-tight">
+                  PT. Benua Green Energy
+                </h4>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Blue Gold Resources · Clean Water Distribution System
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 text-xs">
+              <a
+                href="http://www.benuagreenenergy.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1"
+              >
+                <span>www.benuagreenenergy.com</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+              <span className="text-slate-700">|</span>
+              <Link href="/login" className="hover:text-white transition-colors flex items-center gap-1 text-slate-300 font-medium">
+                <Lock className="w-3 h-3 text-slate-400" />
+                <span>Portal Petugas & Admin</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>© {new Date().getFullYear()} PT. Benua Green Energy. Seluruh hak cipta dilindungi.</p>
+            <p>Program Bantuan Sosial Air Sehat Masyarakat</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
