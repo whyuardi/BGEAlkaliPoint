@@ -21,16 +21,17 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-sky-100 selection:text-sky-900">
       {/* Top Announcement Bar */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 text-center border-b border-slate-800 flex items-center justify-center gap-2">
-        <span className="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
-        <span>Program CSR Berjalan Aktif · Kuota 2 Liter / Orang Setiap Hari Gratis</span>
+      <div className="bg-slate-900 text-slate-300 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 text-center border-b border-slate-800 flex items-center justify-center gap-1.5 sm:gap-2">
+        <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
+        <span className="truncate max-w-full">Program CSR Aktif · Kuota 2 Liter / Orang Setiap Hari Gratis</span>
       </div>
 
       {/* Navigation */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative w-11 h-11 rounded-full overflow-hidden border border-slate-200 shadow-xs flex-shrink-0 bg-white">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 h-15 sm:h-18 flex items-center justify-between gap-2">
+          {/* Brand Logo & Name */}
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-slate-200 shadow-xs flex-shrink-0 bg-white">
               <Image
                 src="/images/logo.jpg"
                 alt="PT. Benua Green Energy Logo"
@@ -39,35 +40,41 @@ export default function HomePage() {
                 priority
               />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-slate-900 text-base tracking-tight leading-none">
+                <span className="font-bold text-slate-900 text-xs sm:text-base tracking-tight leading-tight truncate block">
                   PT. Benua Green Energy
                 </span>
               </div>
-              <p className="text-xs text-slate-500 font-medium leading-tight mt-0.5">
+              <p className="hidden sm:block text-xs text-slate-500 font-medium leading-tight mt-0.5 truncate">
                 Blue Gold Resources · Program Air Alkali Gratis
+              </p>
+              <p className="sm:hidden text-[10px] text-slate-500 font-medium leading-none mt-0.5 truncate">
+                Blue Gold Resources
               </p>
             </div>
           </div>
 
-          <nav className="flex items-center gap-2 sm:gap-3">
+          {/* Action Buttons */}
+          <nav className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
             <Link href="/my-qr">
               <Button
                 variant="outline"
                 size="sm"
-                className="text-xs sm:text-sm font-medium border-slate-300 text-slate-700 hover:bg-slate-50"
+                className="h-8 sm:h-9 px-2 sm:px-3 text-xs sm:text-sm font-medium border-slate-300 text-slate-700 hover:bg-slate-50"
               >
-                <QrCode className="w-3.5 h-3.5 mr-1.5 text-slate-600" />
-                Kartu QR Saya
+                <QrCode className="w-3.5 h-3.5 text-slate-600" />
+                <span className="hidden sm:inline sm:ml-1.5">Kartu QR Saya</span>
+                <span className="sm:hidden ml-1">QR Saya</span>
               </Button>
             </Link>
             <Link href="/register">
               <Button
                 size="sm"
-                className="text-xs sm:text-sm font-medium bg-slate-900 hover:bg-slate-800 text-white shadow-xs"
+                className="h-8 sm:h-9 px-2.5 sm:px-4 text-xs sm:text-sm font-medium bg-slate-900 hover:bg-slate-800 text-white shadow-xs"
               >
-                Daftar Warga
+                <span className="hidden sm:inline">Daftar Warga</span>
+                <span className="sm:hidden">Daftar</span>
               </Button>
             </Link>
           </nav>

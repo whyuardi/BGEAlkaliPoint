@@ -269,15 +269,16 @@ export default function ScannerPage() {
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between text-slate-900 font-sans">
       {/* Top Navbar */}
       <header className="bg-white border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="max-w-4xl mx-auto px-3 sm:px-4 h-15 sm:h-16 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Link
               href="/"
-              className="text-slate-400 hover:text-slate-700 transition-colors"
+              className="text-slate-400 hover:text-slate-700 transition-colors flex-shrink-0"
+              title="Kembali ke Beranda"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
-            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-white">
               <Image
                 src="/images/logo.jpg"
                 alt="Logo"
@@ -285,20 +286,20 @@ export default function ScannerPage() {
                 className="object-cover"
               />
             </div>
-            <div>
-              <span className="text-xs font-bold text-slate-900 block leading-tight">
+            <div className="min-w-0">
+              <span className="text-xs sm:text-sm font-bold text-slate-900 block leading-tight truncate">
                 Pos Scanner Petugas
               </span>
-              <span className="text-[10px] text-slate-500 block leading-tight">
+              <span className="text-[10px] text-slate-500 block leading-none mt-0.5 truncate">
                 PT. Benua Green Energy
               </span>
             </div>
           </div>
 
           {/* Officer identity & logout */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             {currentUser && (
-              <div className="hidden sm:flex flex-col text-right">
+              <div className="hidden md:flex flex-col text-right">
                 <span className="text-xs font-semibold text-slate-900 leading-tight">
                   {currentUser.name}
                 </span>
@@ -311,10 +312,10 @@ export default function ScannerPage() {
               variant="outline"
               size="sm"
               onClick={handleLogout}
-              className="h-8 text-xs text-rose-600 border-rose-200 hover:bg-rose-50 hover:text-rose-700"
+              className="h-8 px-2.5 sm:px-3 text-xs text-rose-600 border-rose-200 hover:bg-rose-50 hover:text-rose-700"
             >
-              <LogOut className="w-3.5 h-3.5 mr-1" />
-              Keluar
+              <LogOut className="w-3.5 h-3.5 sm:mr-1" />
+              <span className="hidden sm:inline">Keluar</span>
             </Button>
           </div>
         </div>

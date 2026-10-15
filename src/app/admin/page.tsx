@@ -175,15 +175,17 @@ export default function AdminPage() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex flex-col justify-between">
       {/* Top Navbar */}
       <header className="bg-white border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 h-15 sm:h-18 flex items-center justify-between gap-2">
+          {/* Brand & Page Title */}
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Link
               href="/"
-              className="mr-2 text-slate-400 hover:text-slate-700 transition-colors"
+              className="text-slate-400 hover:text-slate-700 transition-colors flex-shrink-0"
+              title="Kembali ke Beranda"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-white">
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-white">
               <Image
                 src="/images/logo.jpg"
                 alt="Logo PT. Benua Green Energy"
@@ -192,19 +194,24 @@ export default function AdminPage() {
                 priority
               />
             </div>
-            <div>
-              <h1 className="font-bold text-slate-900 text-sm sm:text-base leading-tight">
-                Panel Monitoring Distribusi Air Alkali
+            <div className="min-w-0">
+              <h1 className="font-bold text-slate-900 text-xs sm:text-base leading-tight truncate">
+                <span className="sm:hidden">Panel Admin</span>
+                <span className="hidden sm:inline">Panel Monitoring Distribusi Air Alkali</span>
               </h1>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="hidden sm:block text-xs text-slate-500 mt-0.5 truncate">
                 PT. Benua Green Energy · Blue Gold Resources
+              </p>
+              <p className="sm:hidden text-[10px] text-slate-500 leading-none mt-0.5 truncate">
+                PT. Benua Green Energy
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* Actions & User */}
+          <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
             {currentUser && (
-              <div className="hidden sm:flex flex-col text-right">
+              <div className="hidden lg:flex flex-col text-right">
                 <span className="text-xs font-semibold text-slate-900 leading-tight">
                   {currentUser.name}
                 </span>
@@ -223,18 +230,19 @@ export default function AdminPage() {
               Perbarui Data
             </Button>
             <Link href="/scanner">
-              <Button size="sm" variant="outline" className="text-xs border-slate-300">
-                Pos Scanner
+              <Button size="sm" variant="outline" className="h-8 px-2 sm:px-3 text-xs border-slate-300">
+                <span className="hidden sm:inline">Pos Scanner</span>
+                <span className="sm:hidden">Scanner</span>
               </Button>
             </Link>
             <Button
               variant="outline"
               size="sm"
               onClick={handleLogout}
-              className="text-xs text-rose-600 border-rose-200 hover:bg-rose-50"
+              className="h-8 px-2 sm:px-3 text-xs text-rose-600 border-rose-200 hover:bg-rose-50"
             >
-              <LogOut className="w-3.5 h-3.5 mr-1" />
-              Keluar
+              <LogOut className="w-3.5 h-3.5 sm:mr-1" />
+              <span className="hidden sm:inline">Keluar</span>
             </Button>
           </div>
         </div>

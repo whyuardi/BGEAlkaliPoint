@@ -92,16 +92,17 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between text-slate-900 font-sans">
       {/* Top Navbar */}
       <header className="bg-white border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="max-w-4xl mx-auto px-3 sm:px-4 h-15 sm:h-16 flex items-center justify-between gap-2">
           <Link
             href="/"
-            className="inline-flex items-center text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+            className="inline-flex items-center text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors flex-shrink-0"
           >
-            <ArrowLeft className="w-4 h-4 mr-1.5" />
-            Kembali ke Beranda
+            <ArrowLeft className="w-4 h-4 mr-1 sm:mr-1.5" />
+            <span className="hidden sm:inline">Kembali ke Beranda</span>
+            <span className="sm:hidden">Beranda</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-slate-200 bg-white">
               <Image
                 src="/images/logo.jpg"
                 alt="Logo"
